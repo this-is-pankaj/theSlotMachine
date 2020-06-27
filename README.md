@@ -7,4 +7,9 @@
   - SCSS : to quickly design the pages with minimal repeatation
   - JQuery: Because it involves a lot of DOM manipulation with very less user inputs.
   - Gulp: To compile the scss into css files and minify the app files.
+
+  To start the application on your local system:
+  - Clone the repo.
+  - Run 'npm i' to install the node dependencies.
+  - Run 'npm start' to get the app up and running  on your browser.
  
