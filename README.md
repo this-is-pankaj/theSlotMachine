@@ -10,7 +10,7 @@
     - **CxSymbol** - The button represents combination with the symbol on the button. If a corresponding match is found, it will start blinking in the same way as the other buttons. Click to view the complete pay table.
   - A section with the following game options:
     - **"Spin"**- Clicking on this button will set the reels in motion and disable this button for next 4secs. Meanwhile, the reels will stop at random positions displaying certain symbols on random win-line (Top, Center or Bottom). Each spin costs a user 1coin and won't spin if a user is out of them.
-    - **"Turn On/Off Debug Mode"**  - This button is available to test the spin and user can set symbols to the corresponding win-line and make the spin to see the desired result. In case, a reel has a missing config, it will land up iin a random position. Users will also be able to set the number of coins in the debug mode. **Note:** *Keep the debug mode on while making the spin. Turning the debug mode off will reset the desired changes.* 
+    - **"Turn On/Off Debug Mode"**  - This button is available to test the spin and user can set symbols to the corresponding win-line and make the spin to see the desired result. In case, a reel has a missing config, it will land up in a random position. Users will also be able to set the number of coins in the debug mode. **Note:** *Keep the debug mode on while making the spin. Turning the debug mode off will reset the desired changes.* 
     - **"Turn Music On/Off"** - Toggle the background music with this button.
 
   Sound effects have been added to the game to make it more appealing and provide "Casino experience" to the users.
