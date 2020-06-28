@@ -14,6 +14,8 @@
     - **"Turn Music On/Off"** - Toggle the background music with this button.
 
   Sound effects have been added to the game to make it more appealing and provide "Casino experience" to the users.
+  
+  **The game can be viewed [here](https://pg-casino.s3.amazonaws.com/index.html)
 
   *Dashboard* 
   ![image](https://user-images.githubusercontent.com/6952221/85942884-f1e09580-b949-11ea-92d4-de52f288c365.png)
