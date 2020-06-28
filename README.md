@@ -19,7 +19,7 @@
   ![image](https://user-images.githubusercontent.com/6952221/85942884-f1e09580-b949-11ea-92d4-de52f288c365.png)
 
   * Dashboard with debugger mode on *
-  ![image](https://user-images.githubusercontent.com/6952221/85942884-f1e09580-b949-11ea-92d4-de52f288c365.png)
+  ![image](https://user-images.githubusercontent.com/6952221/85943001-d6c25580-b94a-11ea-8561-a9f06b93dddf.png)
   
 ## Developer Guidelines
   This app has been generated using the yeoman web-app generator to speed up the development process. Tech-stack used include:
