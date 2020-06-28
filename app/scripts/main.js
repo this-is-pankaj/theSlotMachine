@@ -68,12 +68,12 @@ $(document).ready(function(){
       }
       // If the debugMode is on, set the title to inform the user on turning it off..
       if(isDebugModeOn){
-        $(".debug-mode").text(buttonTexts.active);
-        $(".debug-mode-options").removeClass("d-none");
+        $('.debug-mode').text(buttonTexts.active);
+        $('.debug-mode-options').removeClass('d-none');
       }
       else {
-        $(".debug-mode").text(buttonTexts.inactive);
-        $(".debug-mode-options").addClass("d-none");
+        $('.debug-mode').text(buttonTexts.inactive);
+        $('.debug-mode-options').addClass('d-none');
         this.resetDebugModeSelections();
       }
       // Allow manual update on the number of coins
@@ -81,16 +81,16 @@ $(document).ready(function(){
     },
     manipulateCoins() {
       if(isDebugModeOn) {
-        $(".coins").addClass("d-none");
-        $(".debug-coins").removeClass("d-none");
+        $('.coins').addClass('d-none');
+        $('.debug-coins').removeClass('d-none');
       }
       else {
-        $(".coins").removeClass("d-none");
-        $(".debug-coins").addClass("d-none");
+        $('.coins').removeClass('d-none');
+        $('.debug-coins').addClass('d-none');
       }
     },
     resetDebugModeSelections() {
-      $(".opt-symbol, .opt-position").removeClass("active");
+      $('.opt-symbol, .opt-position').removeClass('active');
     },
     setStartingCoins(numOfCoins) {
       if(numOfCoins!==undefined && numOfCoins>-1) {
@@ -103,8 +103,8 @@ $(document).ready(function(){
       if(coinsLeft!==undefined && coinsLeft>=0) {
         numOfCoinsLeft = coinsLeft;
       }
-      $(".debug-coins").val(numOfCoinsLeft);
-      $(".coins").text(numOfCoinsLeft);
+      $('.debug-coins').val(numOfCoinsLeft);
+      $('.coins').text(numOfCoinsLeft);
     },
     updateCoinsLeft(change) {
       let coinsLeft = numOfCoinsLeft;
@@ -140,7 +140,7 @@ $(document).ready(function(){
         debugTemplate += '</div>';
 
         // Generate the debug optiions for selecting the horizontal line
-        debugTemplate += `<div class="select-position"><p>Select Position: </p>`;
+        debugTemplate += '<div class="select-position"><p>Select Position: </p>';
         for(let  posType in positions) {
           debugTemplate += `<div class="opt-position" title="${positions[posType].displayText}" data-position = "${posType}">
             <p class="position">${positions[posType].displayText}</p>
@@ -151,8 +151,8 @@ $(document).ready(function(){
         debugTemplate += '</div></div>';
       }
 
-      $(".machine").html(reelTemplate);
-      $(".machine-options").find(".debug-mode-options").html(debugTemplate);
+      $('.machine').html(reelTemplate);
+      $('.machine-options').find('.debug-mode-options').html(debugTemplate);
     },
     positionSymbols(posInfo){
       let timer = 1500,  // 1.5 secs initial timer. Add increment for every reel.
@@ -205,10 +205,10 @@ $(document).ready(function(){
 
         // Set the type of the symbols and update the other symbols so that they are not displayed.
         let chosenSymbolType = `.symbol.${type}`,
-          prevSymbolType = `.${prevSymbol.attr("class").split(" ").join(".")}`,
-          nextSymbolType = `.${nextSymbol.attr("class").split(" ").join(".")}`;
+          prevSymbolType = `.${prevSymbol.attr('class').split(' ').join('.')}`,
+          nextSymbolType = `.${nextSymbol.attr('class').split(' ').join('.')}`;
 
-        $(`.reel.${reel}`).find(`.symbol:not(${chosenSymbolType}, ${prevSymbolType}, ${nextSymbolType})`).addClass("back");
+        $(`.reel.${reel}`).find(`.symbol:not(${chosenSymbolType}, ${prevSymbolType}, ${nextSymbolType})`).addClass('back');
         // Stop the reel from spinning further 
         methods.rotate(false, reel);
 
@@ -239,23 +239,23 @@ $(document).ready(function(){
       this.positionSymbols(reelPositions);
     },
     rotate(isOn, reelid){
-      let $reelElem = $(".reel");
+      let $reelElem = $('.reel');
       if(reelid) {
         $reelElem = $(`.reel.${reelid}`);
       }
       if(isOn){
-        $reelElem.addClass("rotate");
+        $reelElem.addClass('rotate');
         this.generateReelPositionAndSymbol();
       }
       else{
-        $reelElem.removeClass("rotate");
-        $("#spinStopTrack")[0].play();
+        $reelElem.removeClass('rotate');
+        $('#spinStopTrack')[0].play();
       }
     },
     prepareReels(){
       // prepare reels for rotation by removing back, top, bottom, center classes and transform css style.
-      $(".reel").find(".symbol").removeClass('top bottom center back blink').removeAttr('style');
-      $(".blink").removeClass("blink");
+      $('.reel').find('.symbol').removeClass('top bottom center back blink').removeAttr('style');
+      $('.blink').removeClass('blink');
       this.rotate(true);
     },
     generateRandomPosAndSymbol(reelid, posOrSym){
@@ -289,32 +289,32 @@ $(document).ready(function(){
       return Math.floor((Math.random()*(max-min+1)+min));
     },
     bindEvents()  {
-      $(".debug-mode").off().on("click", ()=>{
+      $('.debug-mode').off().on('click', ()=>{
         isDebugModeOn  = !isDebugModeOn;
         this.onDebugModeUpdate(isDebugModeOn);
       });
       
-      $(".debug-coins").off("change").on("keyup", ()=>{
-        let newCoins = parseInt($(".debug-coins").val());
+      $('.debug-coins').off('change').on('keyup', ()=>{
+        let newCoins = parseInt($('.debug-coins').val());
         // If the coin is a valid non-negative integer, allow the update
         if(newCoins>=0) {
           this.setCoinsLeft(newCoins);
         }
         else {
-          alert("invalid number of coins");
+          alert('invalid number of coins');
           this.setCoinsLeft(numOfCoinsLeft);  // Set it to the last valid value of coins
         }
       })
 
-      $(".opt-symbol, .opt-position").off().on("click", function(){
+      $('.opt-symbol, .opt-position').off().on('click', function(){
         // Proceed with the callback only if the debug mode is active...
         if(isDebugModeOn) {
-          $(this).siblings().removeClass("active");
-          $(this).addClass("active");
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
         }
       });
 
-      $(".spin").off("click").on("click", function(){
+      $('.spin').off('click').on('click', function(){
         // Only if the user has valid number of coins, i.e, greater than 0, allow the spin!
         if(numOfCoinsLeft) {
           let $this = $(this);
@@ -324,22 +324,22 @@ $(document).ready(function(){
           // methods.generateReelPositionAndSymbol();
           methods.prepareReels();
           //play the spin sound
-          $("#spinTrack")[0].play();
-          $(this).attr("disabled", true);
+          $('#spinTrack')[0].play();
+          $(this).attr('disabled', true);
           // Disable the button for 4 secs after it's clicked
           setTimeout(()=>{
-            $this.attr("disabled", false);
+            $this.attr('disabled', false);
           }, 4000);
         }
         else{
-          alert("You don't have enough coins to make the Spin!");
+          alert('You don\'t have enough coins to make the Spin!');
         }
       })
     },
     populatePayTableInfo() {
       // Generate icons for quick access pay-table
       let str  = '<h5>Pay Table </h5>';
-      let modalStr = ``;
+      let modalStr = '';
       let allMatches = Object.keys(statics.payTable.allSame);
       let combinations = Object.keys(statics.payTable.combination);
       let alreadyCreated = [];
@@ -349,14 +349,14 @@ $(document).ready(function(){
         str += `<span class="symbol thumbnail pay-table-icon ${allMatches[i]}"></span>`;
         alreadyCreated.push(id);
         for(let p in statics.payTable.allSame[allMatches[i]]) {
-          modalStr += `<tr>`;
+          modalStr += '<tr>';
           modalStr += `<td>${positions[p].displayText}</td>`;
           // print in 3 columns for each reel
           for(let x=0; x<3;x++) {
             modalStr += `<td><span class="symbol ${allMatches[i]} thumbnail"></span></td>`;
           }
           modalStr += `<td>${statics.payTable.allSame[allMatches[i]][p]}</td>`
-          modalStr += `</tr>`;
+          modalStr += '</tr>';
         } 
       }
       for(let i=0; i<combinations.length; i++) {
@@ -364,7 +364,7 @@ $(document).ready(function(){
         // Only if a match is found, save the combination as array
         if(combinedWith) {
           let combination = [combinations[i], combinedWith],
-            combinationId =  combination.join("+"),
+            combinationId =  combination.join('+'),
             reverseCombination = `${combinedWith}+${combinations[i]}`;
           // Check if a button has already been created for this combination 
           if(!alreadyCreated.includes(reverseCombination)) {
@@ -372,12 +372,12 @@ $(document).ready(function(){
             str += `<span class="symbol thumbnail pay-table-icon combined ${combinations[i]}">C</span>`;
             alreadyCreated.push(combinationId);
           }
-          modalStr += `<tr>`;
-          modalStr += `<td>Any Combination of Lines/Reels </td>`;
+          modalStr += '<tr>';
+          modalStr += '<td>Any Combination of Lines/Reels </td>';
           modalStr += `<td> <span class="symbol thumbnail ${combinations[i]}"></span> </td>`;
           modalStr += `<td colspan="2"> <span class="symbol thumbnail ${combinedWith} pay-table-comb"></span></td>`;
           modalStr += `<td>${statics.payTable.combination[combinations[i]].prize}</td>`;
-          modalStr += `</tr>`;
+          modalStr += '</tr>';
         }
         else {
           let id= `comb-${combinations[i]}`;
@@ -385,23 +385,23 @@ $(document).ready(function(){
           str += `<span class="symbol thumbnail pay-table-icon combined ${combinations[i]}">C</span>`;
           alreadyCreated.push(id);
 
-          modalStr += `<tr></tr>`;
-          modalStr += `<td>Any Combination of Lines/Reels </td>`;
+          modalStr += '<tr></tr>';
+          modalStr += '<td>Any Combination of Lines/Reels </td>';
           modalStr += `<td class="text-center" colspan="3"> <span class="symbol thumbnail ${combinations[i]} pay-table-comb"></span></td>`;
           modalStr += `<td>${statics.payTable.combination[combinations[i]].prize}</td>`;
-          modalStr += `</tr>`;
+          modalStr += '</tr>';
         }
-        str += `</button>`;
+        str += '</button>';
       }
-      $(".quick-pay-table").html(str);
-      $(".pay-table-body").html(modalStr);
+      $('.quick-pay-table').html(str);
+      $('.pay-table-body').html(modalStr);
     },
     getSymbolsInPosition(){
       let validPositionedSymbols = {};
       for(let reelid in reelPositions) {
         validPositionedSymbols[reelid] = {};
         for(let posType in positions){
-          validPositionedSymbols[reelid][posType] = $(`.${reelid}`).find(`.symbol.${posType}`).data("symbol");
+          validPositionedSymbols[reelid][posType] = $(`.${reelid}`).find(`.symbol.${posType}`).data('symbol');
         }
       }
 
@@ -533,28 +533,28 @@ $(document).ready(function(){
       // If winningSymbol is a string, that meeans it was an all match case.
       if(winningSymbol)  {
         if(!isComboWin){
-          $(".reel").find(`.symbol.${winningSymbol}`).addClass("blink");
-          $(`.pay-table-icon-wrapper[data-paytable="all-${winningSymbol}"]`).addClass("blink");
+          $('.reel').find(`.symbol.${winningSymbol}`).addClass('blink');
+          $(`.pay-table-icon-wrapper[data-paytable="all-${winningSymbol}"]`).addClass('blink');
         }
         else if(isComboWin && !winningSymbol.reel1) {
-          $(".reel").find(`.symbol.${winningSymbol}`).addClass("blink");
-          $(`.pay-table-icon-wrapper[data-paytable="comb-${winningSymbol}"]`).addClass("blink");
+          $('.reel').find(`.symbol.${winningSymbol}`).addClass('blink');
+          $(`.pay-table-icon-wrapper[data-paytable="comb-${winningSymbol}"]`).addClass('blink');
         }
         else{
           // loop over all reels and deesired symbols
           let combination = [];
           for(let reelid in winningSymbol){
-            $(`.reel.${reelid}`).find(`.symbol.${winningSymbol[reelid]}`).addClass("blink");
+            $(`.reel.${reelid}`).find(`.symbol.${winningSymbol[reelid]}`).addClass('blink');
             if(!combination.includes(winningSymbol[reelid])){
               combination.push(winningSymbol[reelid]);
             }
           }
-          let combinationId = combination.length>1? combination.join("+"): combination[0],
-            reverseCombinationId = combination.reverse().join("+");
-          $(`.pay-table-icon-wrapper[data-paytable="comb-${combinationId}"]`).addClass("blink");
-          $(`.pay-table-icon-wrapper[data-paytable="comb-${reverseCombinationId}"]`).addClass("blink");
+          let combinationId = combination.length>1? combination.join('+'): combination[0],
+            reverseCombinationId = combination.reverse().join('+');
+          $(`.pay-table-icon-wrapper[data-paytable="comb-${combinationId}"]`).addClass('blink');
+          $(`.pay-table-icon-wrapper[data-paytable="comb-${reverseCombinationId}"]`).addClass('blink');
         }
-        $("#coinsAddedTrack")[0].play();
+        $('#coinsAddedTrack')[0].play();
         alert(`Congrats! You have won ${prizeWon} in your last spin! Keep spinning to win more!`);
         this.updateCoinsLeft(prizeWon);
       }
@@ -564,10 +564,10 @@ $(document).ready(function(){
       this.generateReel();
       this.populatePayTableInfo();
       this.bindEvents();
-      $("#bgScore").prop("volume", 0.4);
-      $("#bgScore")[0].play();
-      $("#spinTrack").prop("volume", 1);
-      $("#spinStopTrack").prop("volume", 1);
+      $('#bgScore').prop('volume', 0.4);
+      $('#bgScore')[0].play();
+      $('#spinTrack').prop('volume', 1);
+      $('#spinStopTrack').prop('volume', 1);
     }
   };
 
