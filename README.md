@@ -35,7 +35,9 @@
   - Run 'npm i' to install the node dependencies.
   - Run 'npm start' to get the app up and running on your browser 'http://localhost:9000/'.
   - Run 
-    > npm run build
+    ``` 
+    npm run build
+    ```
     for building the application for prod env.
 
   The "Turn Music on/off" button has been introduced to mitigate the autoplay issues in chrome browser.
