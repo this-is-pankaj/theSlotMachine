@@ -14,6 +14,12 @@
     - **"Turn Music On/Off"** - Toggle the background music with this button.
 
   Sound effects have been added to the game to make it more appealing and provide "Casino experience" to the users.
+
+  * Dashboard * 
+  ![image](https://user-images.githubusercontent.com/6952221/85942884-f1e09580-b949-11ea-92d4-de52f288c365.png)
+
+  * Dashboard with debugger mode on *
+  ![image](https://user-images.githubusercontent.com/6952221/85942884-f1e09580-b949-11ea-92d4-de52f288c365.png)
   
 ## Developer Guidelines
   This app has been generated using the yeoman web-app generator to speed up the development process. Tech-stack used include:
@@ -22,10 +28,15 @@
   - JQuery: Because it involves a lot of DOM manipulation with very less user inputs.
   - Gulp: To compile the scss into css files and minify the app files.
 
+  The app is completely responsive and will work smoothly on any mobile device.
+
   To start the application on your local system:
   - Clone the repo.
   - Run 'npm i' to install the node dependencies.
   - Run 'npm start' to get the app up and running on your browser 'http://localhost:9000/'.
+  - Run 
+    > npm run build
+    for building the application for prod env.
 
   The "Turn Music on/off" button has been introduced to mitigate the autoplay issues in chrome browser.
  
