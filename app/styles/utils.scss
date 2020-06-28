@@ -1,0 +1,23 @@
+@keyframes rotate {
+  0%{
+    transform: rotateX( 0deg) translateZ(0) translateY(300%);
+  }
+  100% {
+    transform: rotateX( 0deg) translateZ(0) translateY(-300%);
+  }
+}
+
+@mixin animation-mixin($name, $from, $to) {
+  @keyframes #{$name} {
+    0% {
+      background-color: $from;
+    }
+    100% {
+      background-color: $to;
+    }
+  }
+}
+
+@include animation-mixin(blinkSymbol, initial, #a7284b);
+
+@include animation-mixin(blinkPayTable, initial, #a7284b);

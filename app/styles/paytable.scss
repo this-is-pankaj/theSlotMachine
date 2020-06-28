@@ -1,0 +1,23 @@
+.quick-pay-table {
+  .pay-table-icon-wrapper {
+    box-shadow: 0 0 5px 0 #333;
+    border-radius: 100%;
+    margin: 5px;
+    padding: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ddd;
+
+    &.blink {
+      animation-name: blinkPayTable;
+      animation-duration: 0.5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
+
+.pay-table-comb {
+  margin: 0px auto;
+}

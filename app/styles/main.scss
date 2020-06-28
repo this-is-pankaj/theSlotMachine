@@ -1,0 +1,45 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+@import 'utils.scss';
+@import 'paytable.scss';
+@import 'slot-machine.scss';
+@import 'symbol.scss';
+
+.bg-container {
+  background-image: url(https://www.harrishillskijump.org/wp-content/uploads/2018/02/casino-4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.header {
+  .game-title{
+    padding: 20px;
+    color: #b20b0b;
+    text-shadow: 2px 2px #333;
+    border-bottom: 3px solid #aaa;
+  }
+}
+
+.win-message {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  opacity: 1;
+  transition: all 1s linear;
+
+  &.inactive {
+    opacity: 0;
+  }
+}
