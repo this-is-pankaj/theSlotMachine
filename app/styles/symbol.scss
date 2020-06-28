@@ -1,10 +1,14 @@
 .symbol {
-  min-width: 141px;
-  min-height: 120px;
+  max-width: 141px;
+  height: 120px;
+  width: 100%;
   display: block;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  position: absolute;
+  backface-visibility: hidden;
+  box-shadow: 0 0 5px 1px #333;
 
   &.thumbnail {
     width: 50px;
@@ -12,6 +16,33 @@
     min-width: unset;
     min-height: unset;
     cursor: pointer;
+    position: static;
+    box-shadow: none;
+  }
+
+  &:not(.thumbnail) {
+    &:nth-child(1) { 
+      transform: translateY(50%); 
+    }
+    &:nth-child(2) { 
+      transform: translateY(150%); 
+    }
+    &:nth-child(3) {
+      transform: translateY(200%); 
+    }
+    &:nth-child(4) { 
+      transform: translateY(-100%);
+    }
+    &:nth-child(5) { 
+      transform: translateY(-50%);
+    }
+  }
+
+  &.blink {
+    animation-name: blinkSymbol;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
   }
   
   &.bar3 {

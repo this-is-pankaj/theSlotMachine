@@ -127,8 +127,9 @@ $(document).ready(function(){
           pos: undefined,
           type: undefined
         };
-        debugTemplate += `<div class="col-4 debug-options reel${r+1}">
-          <div class="select-symbol">`;
+        debugTemplate += `<div class="debug-options reel${r+1}">
+          <h4 class="text-center">Reel ${r+1} Config</h4>
+          <div class="select-symbol"> <p>Select Symbol: </p>`;
         for(let s=0; s<symbols.length; s++)  {
           reelTemplate += `<div class="${symbols[s].type} symbol" data-symbol="${symbols[s].type}"></div>`;
 
@@ -139,7 +140,7 @@ $(document).ready(function(){
         debugTemplate += '</div>';
 
         // Generate the debug optiions for selecting the horizontal line
-        debugTemplate += `<div class="select-position">`;
+        debugTemplate += `<div class="select-position"><p>Select Position: </p>`;
         for(let  posType in positions) {
           debugTemplate += `<div class="opt-position" title="${positions[posType].displayText}" data-position = "${posType}">
             <p class="position">${positions[posType].displayText}</p>
@@ -472,7 +473,7 @@ $(document).ready(function(){
           for(let pos in reel3) {
             if(values.includes(reel3[pos])) {
               // If the matched values already has reelvalue from reel2, remove the macthed value from reel2
-              if(matchedValues.length>1 && reel3[pos]===reelValue && matchedValues.includes(reelValue)) {
+              if(matchedValues.length>1 && matchedValues.includes(reelValue)) {
                 matchedValues.splice(matchedValues.indexOf(reelValue), 1);
               }
               match  =  true;
@@ -564,6 +565,7 @@ $(document).ready(function(){
       this.populatePayTableInfo();
       this.bindEvents();
       $("#bgScore").prop("volume", 0.4);
+      $("#bgScore")[0].play();
       $("#spinTrack").prop("volume", 1);
       $("#spinStopTrack").prop("volume", 1);
     }
