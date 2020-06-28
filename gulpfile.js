@@ -118,6 +118,12 @@ function images() {
     .pipe(dest('dist/images'));
 };
 
+function audio() {
+  return src('app/audio/**/*', { since: lastRun(audio) })
+    .pipe($.imagemin())
+    .pipe(dest('dist/audio'));
+};
+
 function fonts() {
   return src('app/fonts/**/*.{eot,svg,ttf,woff,woff2}')
     .pipe($.if(!isProd, dest('.tmp/fonts'), dest('dist/fonts')));
@@ -147,6 +153,7 @@ const build = series(
     lint,
     series(parallel(styles, scripts, modernizr), html),
     images,
+    audio,
     fonts,
     extras
   ),
