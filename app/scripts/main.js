@@ -572,7 +572,11 @@ $(document).ready(function(){
           $(`.pay-table-icon-wrapper[data-paytable="comb-${reverseCombinationId}"]`).addClass('blink');
         }
         $('#coinsAddedTrack')[0].play();
-        alert(`Congrats! You have won ${prizeWon} in your last spin! Keep spinning to win more!`);
+        $('.win-message').html(`<strong>Congrats!</strong> You have won ${prizeWon} in your last spin! Keep spinning to win more!`).removeClass('inactive');
+
+        setTimeout(function(){
+          $('.win-message').addClass('inactive');
+        }, 2000);
         this.updateCoinsLeft(prizeWon);
       }
     },

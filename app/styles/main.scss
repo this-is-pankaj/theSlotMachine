@@ -29,3 +29,17 @@
     border-bottom: 3px solid #aaa;
   }
 }
+
+.win-message {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  opacity: 1;
+  transition: all 1s linear;
+
+  &.inactive {
+    opacity: 0;
+  }
+}
