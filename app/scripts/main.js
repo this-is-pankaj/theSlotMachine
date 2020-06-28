@@ -54,6 +54,7 @@ $(document).ready(function(){
   const startingCoin = 10;
 
   let isDebugModeOn = false;  // Debug mode is false by default.
+  let isMusicOn = false;
   let numOfCoinsLeft = startingCoin;
 
   let reelPositions  = {
@@ -334,6 +335,22 @@ $(document).ready(function(){
         else{
           alert('You don\'t have enough coins to make the Spin!');
         }
+      });
+
+      $('#bgScore').prop('volume', 0.4);
+      $('#spinTrack').prop('volume', 1);
+      $('#spinStopTrack').prop('volume', 1);
+
+      $("#playBg").off().on("click", function(){
+        isMusicOn = !isMusicOn;
+        if(isMusicOn) {
+          $('#bgScore')[0].play();
+          $(this).text('Turn Music Off');
+        }
+        else {
+          $('#bgScore')[0].pause();
+          $(this).text('Turn Music On');
+        }
       })
     },
     populatePayTableInfo() {
@@ -564,9 +581,6 @@ $(document).ready(function(){
       this.generateReel();
       this.populatePayTableInfo();
       this.bindEvents();
-      $('#bgScore').prop('volume', 0.4);
-      $('#spinTrack').prop('volume', 1);
-      $('#spinStopTrack').prop('volume', 1);
     }
   };
 
