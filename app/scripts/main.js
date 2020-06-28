@@ -565,7 +565,6 @@ $(document).ready(function(){
       this.populatePayTableInfo();
       this.bindEvents();
       $('#bgScore').prop('volume', 0.4);
-      $('#bgScore')[0].play();
       $('#spinTrack').prop('volume', 1);
       $('#spinStopTrack').prop('volume', 1);
     }
